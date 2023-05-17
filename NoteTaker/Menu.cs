@@ -9,11 +9,16 @@ namespace NoteTaker
     internal class Menu
     {
         private string? input;
+        private readonly Notes notes;
 
+        public Menu(Notes notes)
+        {
+            this.notes = notes;
+        }
 
         public void DisplayMenu()
         {
-            Console.WriteLine("What would you like to do?\n1 - Add notes\n2 - Search for notes\n3 - Update notes");
+            Console.WriteLine("What would you like to do?\n Add notes\n Search for notes\n Update notes");
            SwitchMenuChoice(input = Console.ReadLine());
         }
 
@@ -22,8 +27,8 @@ namespace NoteTaker
 
             switch(input.ToLower()) 
             {
-                case string when input.Contains("add"): break;
-                case string when input.Contains("search"): break;
+                case string when input.Contains("add"): notes.GettingNotesToAdd(); break;
+                case string when input.Contains("search"): notes.SearchForNotes(); break;
                 case string when input.Contains("update"): break;
                 default: Console.WriteLine($"I do not understand {input}"); break;
             

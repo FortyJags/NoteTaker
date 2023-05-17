@@ -1,5 +1,10 @@
 ﻿using NoteTaker;
 
-Menu menu = new();
+Notes notes = new();
+Menu menu = new(notes);
 
-menu.DisplayMenu();
+
+while (true)
+{
+    menu.DisplayMenu();
+}
